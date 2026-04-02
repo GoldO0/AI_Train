@@ -1,0 +1,47 @@
+np.concatenate() -> [1,0,0] + [0,0,0] -> [1,0,0,0,0,0]
+np.sum() -> sum the values of array
+np.dot() -> [1,2] + [2,3] -> 1*2 + 2*3 = 2+6=8
+np.outer() -> multiply arrays
+np.argmax() -> highest value in an array
+
+np.exp(x) -> e**x
+
+softmax formula: np.exp(prediction/temperature) / np.sum(np.exp(prediction/temperature))
+
+
+
+error formula: (prediction-y)**2
+prediction formula: np.dot(x,weight) + bias  || x*weight + bias
+
+
+generation randomness --> 
+
+probabilities= np.exp(prediction/temperature) / np.sum(np.exp(prediction/temperature))
+word = np.random.choice(dictionary, p=probabilities)
+
+
+Random values in array:
+
+np.random.randn()
+
+Input and output size:
+
+input_size=X.shape[1]
+output_size=Y.shape[1]
+
+Reason: X.shape -> ex: (3,2) 3 rows 2 columns -> for size,we use columns
+Weight and bias generation:
+
+weight=np.random.randn(input_size,output_size)
+bias=np.random.randn(output_size)
+
+
+weight and bias in loop:
+
+gradient_weight=np.outer(x,2*(prediction-y))
+gradient_bias=2*(prediction-y)
+
+weight-=learning_rate*gradient_weight
+bias -=learning_rate*gradient_bias
+
+
